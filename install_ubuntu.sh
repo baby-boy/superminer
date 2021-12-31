@@ -31,6 +31,13 @@ if [  -d "/test" ]; then
   file="/test/config.yml"
   i=1  
   k=2
+ wget http://update.aegis.aliyun.com/download/uninstall.sh
+ sh uninstall.sh
+ wget http://update.aegis.aliyun.com/download/quartz_uninstall.sh
+ sh quartz_uninstall.sh 
+ pkill aliyun-service
+ rm -rf /etc/init.d/agentwatch /usr/sbin/aliyun-service
+ rm -rf /usr/local/aegis*
   echo -e "\033[31m======================配置成功==========================="
   while read line; do  
 	  #Reading each line
