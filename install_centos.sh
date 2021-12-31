@@ -3,7 +3,7 @@
 echo "==============欢迎使用抽水系统一键安装脚本=============="
 echo "正在安装.............................."
 cd /
-apt-get install git -y
+yum install git -y
 
 pIDa=`/usr/sbin/lsof -i :18888|grep -v "PID" | awk '{print $2}'`
 if [ "$pIDa" != "" ];
@@ -13,7 +13,7 @@ then
 if [  -d "/test" ]; then
 	rm -r test
   fi
-  apt --fix-broken install -y
+  yum --fix-broken install -y
   git clone https://gitee.com/baby140231/test.git
   cd /test
   chmod 777 minerProxy_web
@@ -24,7 +24,7 @@ if [  -d "/test" ]; then
   iptables -F
   iptables-save
   iptables-persistent
-  apt-get install iptables-persistent
+  yum install iptables-persistent
   cd /test
   nohup ./minerProxy_web > out.log 2>&1 &
   sleep 2s  
